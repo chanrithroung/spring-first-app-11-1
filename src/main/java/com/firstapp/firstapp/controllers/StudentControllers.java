@@ -1,5 +1,6 @@
 package com.firstapp.firstapp.controllers;
-import com.firstapp.firstapp.entity.student.Student;
+import com.firstapp.firstapp.dto.StudentRequestDto;
+import com.firstapp.firstapp.dto.StudentResponseDto;
 import com.firstapp.firstapp.services.StudentServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,12 +17,23 @@ public class StudentControllers {
     }
 
     @GetMapping
-    List<Student> getStudents() {
+    List<StudentResponseDto> getStudents() {
         return studentServices.listStudent();
     }
 
     @PostMapping
-    String createStudent(@RequestBody Student student) {
-        return studentServices.createStudent(student);
+    String createStudent(@RequestBody StudentRequestDto studentRequestDto) {
+        return studentServices.createStudent(studentRequestDto);
     }
+
+    @GetMapping("/{id}")
+     StudentResponseDto detailStudent(@PathVariable Integer id) {
+        return studentServices.getDetailStudent(id);
+    }
+
+    @PutMapping("/{id}")
+    String updateStudent(@PathVariable Integer id, @RequestBody StudentRequestDto studentRequestDto) {
+        return studentServices.updateStudent(id, studentRequestDto);
+    }
+
 }

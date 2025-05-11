@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Entity
 @Table(name = "tb_student")
 public class Student {
@@ -19,4 +18,11 @@ public class Student {
     private String name;
     @Column
     private String gender;
+    private String password;
+
+    public Student(String name, String gender, String password) {
+        this.name = name;
+        this.gender = gender;
+        this.password = password;
+    }
 }
