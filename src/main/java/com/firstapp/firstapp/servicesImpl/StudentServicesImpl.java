@@ -62,4 +62,15 @@ public class StudentServicesImpl implements StudentServices {
         }
         return "Not found student";
     }
+
+
+    @Override
+    public String deleteStudent(Integer id) {
+        Optional<Student> student = studentRepository.findById(id);
+        if (student.isPresent()) {
+            studentRepository.deleteById(id);
+            return "Student is deleted successfully!";
+        }
+        return "Student not found!";
+    }
 }

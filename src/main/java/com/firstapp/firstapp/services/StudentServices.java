@@ -9,4 +9,5 @@ public interface StudentServices {
     String createStudent(StudentRequestDto studentRequestDto);
     StudentResponseDto getDetailStudent(Integer id);
     String updateStudent(Integer id, StudentRequestDto studentRequestDto);
+    String deleteStudent(Integer id);
 }
