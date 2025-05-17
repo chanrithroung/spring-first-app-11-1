@@ -1,8 +1,12 @@
 package com.firstapp.firstapp.controllers;
+import com.firstapp.firstapp.apiResponse.ApiResponse;
 import com.firstapp.firstapp.dto.StudentRequestDto;
 import com.firstapp.firstapp.dto.StudentResponseDto;
 import com.firstapp.firstapp.services.StudentServices;
+import org.hibernate.dialect.unique.CreateTableUniqueDelegate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
@@ -14,6 +18,11 @@ public class StudentControllers {
     public StudentControllers(StudentServices studentServices) {
         this.studentServices = studentServices;
         System.out.println("Here is constructor!");
+    }
+
+    @GetMapping("/test")
+    ResponseEntity<ApiResponse<String>> test() {
+        return ResponseEntity.ok(new ApiResponse<>( "success fetch student", 200, "Student data" ));
     }
 
     @GetMapping
