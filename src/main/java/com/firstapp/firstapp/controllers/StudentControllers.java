@@ -33,8 +33,12 @@ public class StudentControllers {
     }
 
     @PostMapping
-    String createStudent(@RequestBody StudentRequestDto studentRequestDto) {
-        return studentServices.createStudent(studentRequestDto);
+    ResponseEntity<ApiResponse<String>> createStudent(@RequestBody StudentRequestDto studentRequestDto) {
+        return ResponseEntity.ok( new ApiResponse(
+                studentServices.createStudent(studentRequestDto),
+                200,
+                "Student created Successfully!"
+        ) );
     }
 
     @GetMapping("/{id}")
